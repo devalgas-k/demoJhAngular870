@@ -1,0 +1,181 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-job-heading" data-cy="JobCreateUpdateHeading" jhiTranslate="demoJhAngular870App.job.home.createOrEditLabel">
+        Créer ou éditer un Job
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="demoJhAngular870App.job.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let jobTitleRef = editForm.get('jobTitle')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_jobTitle" jhiTranslate="demoJhAngular870App.job.jobTitle">Job Title</label>
+          <input type="text" class="form-control" name="jobTitle" id="field_jobTitle" data-cy="jobTitle" formControlName="jobTitle" />
+          @if (jobTitleRef.invalid && (jobTitleRef.dirty || jobTitleRef.touched)) {
+            <div>
+              @if (editForm.get('jobTitle')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_minSalary" jhiTranslate="demoJhAngular870App.job.minSalary">Min Salary</label>
+          <input type="number" class="form-control" name="minSalary" id="field_minSalary" data-cy="minSalary" formControlName="minSalary" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_maxSalary" jhiTranslate="demoJhAngular870App.job.maxSalary">Max Salary</label>
+          <input type="number" class="form-control" name="maxSalary" id="field_maxSalary" data-cy="maxSalary" formControlName="maxSalary" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_subSalary" jhiTranslate="demoJhAngular870App.job.subSalary">Sub Salary</label>
+          <input type="number" class="form-control" name="subSalary" id="field_subSalary" data-cy="subSalary" formControlName="subSalary" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_totalSalary" jhiTranslate="demoJhAngular870App.job.totalSalary">Total Salary</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalSalary"
+            id="field_totalSalary"
+            data-cy="totalSalary"
+            formControlName="totalSalary"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_date" jhiTranslate="demoJhAngular870App.job.date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeCode" jhiTranslate="demoJhAngular870App.job.codeCode">Code Code</label>
+          <input type="text" class="form-control" name="codeCode" id="field_codeCode" data-cy="codeCode" formControlName="codeCode" />
+        </div>
+
+        @let profilRef = editForm.get('profil')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_profil" jhiTranslate="demoJhAngular870App.job.profil">Profil</label>
+          <div>
+            @if (profilRef.value) {
+              <img
+                [src]="'data:' + editForm.get('profilContentType')!.value + ';base64,' + profilRef.value"
+                style="max-height: 100px"
+                alt="job"
+              />
+            }
+            @if (profilRef.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start">{{ editForm.get('profilContentType')!.value }}, {{ byteSize(profilRef.value!) }}</span>
+                <button
+                  type="button"
+                  (click)="clearInputImage('profil', 'profilContentType', 'file_profil')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_profil"
+              data-cy="profil"
+              (change)="setFileData($event, 'profil', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="profil" id="field_profil" data-cy="profil" formControlName="profil" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="profilContentType"
+            id="field_profilContentType"
+            formControlName="profilContentType"
+          />
+          @if (profilRef.invalid && (profilRef.dirty || profilRef.touched)) {
+            <div>
+              @if (editForm.get('profil')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="field_tasks" jhiTranslate="demoJhAngular870App.job.task">Task</label>
+          <select
+            class="form-control"
+            id="field_tasks"
+            data-cy="task"
+            multiple
+            name="tasks"
+            formControlName="tasks"
+            [compareWith]="compareTask"
+          >
+            @for (taskOption of tasksSharedCollection; track $index) {
+              <option [ngValue]="taskOption">{{ taskOption.title }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_employee" jhiTranslate="demoJhAngular870App.job.employee">Employee</label>
+          <select
+            class="form-control"
+            id="field_employee"
+            data-cy="employee"
+            name="employee"
+            formControlName="employee"
+            [compareWith]="compareEmployee"
+          >
+            <option [ngValue]="null"></option>
+            @for (employeeOption of employeesSharedCollection; track $index) {
+              <option [ngValue]="employeeOption">{{ employeeOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

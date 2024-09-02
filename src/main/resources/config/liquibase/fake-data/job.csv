@@ -1,0 +1,11 @@
+id;job_title;min_salary;max_salary;sub_salary;total_salary;date;code_code;profil;profil_content_type
+1;Superviseur de l'utilisabilité national;4977.12;24171;14253.08;5878.35;2024-09-01;a921f432-7b3d-4f1d-91ec-b966ae3eb6df;../fake-data/blob/hipster.png;image/png
+2;Administrateur de paradigme futur;28238.34;25681;462.04;19815.93;2024-09-01;95b51c9b-8847-41fc-a496-a380968241c2;../fake-data/blob/hipster.png;image/png
+3;Manager des comptes national;7758.46;17792;4389.88;4264.59;2024-09-01;e99f11d0-f762-4d52-8a57-957a1d6c28f8;../fake-data/blob/hipster.png;image/png
+4;Agent de l'utilisabilité régional;301.33;29141;6281.72;25410.08;2024-09-01;5554f697-a8c7-4538-8ba3-8c108db906d7;../fake-data/blob/hipster.png;image/png
+5;Directeur des comptes principal;28487.75;24051;21777.32;19277.08;2024-09-02;b40902d5-6dca-447c-9ea3-7f20c9f55505;../fake-data/blob/hipster.png;image/png
+6;Designer du marketing central;32333.1;23985;24524.53;5775.54;2024-09-02;ac9acae5-37da-42d0-b8e2-6c09cba6aeb9;../fake-data/blob/hipster.png;image/png
+7;Consultant de division client;30638.75;16940;28486.48;21837.38;2024-09-01;fd208656-3295-49ce-b693-001b8a19ef6a;../fake-data/blob/hipster.png;image/png
+8;Architecte des applications national;3562.14;4701;21024.55;13062.19;2024-09-01;64d3cd93-d669-4c80-a92b-2fc8e11ec7ea;../fake-data/blob/hipster.png;image/png
+9;Directeur de l'assurance interne;31488.61;22589;5812.69;13420.18;2024-09-02;bfba18b9-7bed-48c2-bf26-738398d8040f;../fake-data/blob/hipster.png;image/png
+10;Analyste des marchés principal;23540.98;15135;13490.14;23984.58;2024-09-01;760258e2-53f4-4db4-ad77-345363768541;../fake-data/blob/hipster.png;image/png

@@ -1,13 +1,20 @@
 {
-  "annotations": {},
+  "annotations": {
+    "changelogDate": "20240902054736"
+  },
   "applications": "*",
+  "dto": "mapstruct",
   "fields": [
     {
       "fieldName": "regionName",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^[A-Z][a-z]+\\d$"
     }
   ],
   "name": "Region",
+  "pagination": "pagination",
   "relationships": [],
+  "searchEngine": "no",
   "service": "serviceImpl"
 }

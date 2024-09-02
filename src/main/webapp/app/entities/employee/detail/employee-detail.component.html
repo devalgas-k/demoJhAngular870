@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (employee(); as employeeRef) {
+      <div>
+        <h2 data-cy="employeeDetailsHeading"><span jhiTranslate="demoJhAngular870App.employee.detail.title">Employee</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ employeeRef.id }}</span>
+          </dd>
+          <dt>
+            <span
+              [ngbTooltip]="'demoJhAngular870App.employee.help.firstName' | translate"
+              jhiTranslate="demoJhAngular870App.employee.firstName"
+              >First Name</span
+            >
+          </dt>
+          <dd>
+            <span>{{ employeeRef.firstName }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.lastName">Last Name</span></dt>
+          <dd>
+            <span>{{ employeeRef.lastName }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.email">Email</span></dt>
+          <dd>
+            <span>{{ employeeRef.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.phoneNumber">Phone Number</span></dt>
+          <dd>
+            <span>{{ employeeRef.phoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.hireDate">Hire Date</span></dt>
+          <dd>
+            <span>{{ employeeRef.hireDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.salary">Salary</span></dt>
+          <dd>
+            <span>{{ employeeRef.salary }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.commissionPct">Commission Pct</span></dt>
+          <dd>
+            <span>{{ employeeRef.commissionPct }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.level">Level</span></dt>
+          <dd>
+            <span>{{ employeeRef.level }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.contract">Contract</span></dt>
+          <dd>
+            <span [jhiTranslate]="'demoJhAngular870App.Contract.' + (employeeRef.contract ?? 'null')">{{
+              { null: '', CDI: 'Permanent contract', CDD: 'Fixed-term contract', FREELANCE: 'Freelance' }[employeeRef.contract ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.cv">Cv</span></dt>
+          <dd>
+            @if (employeeRef.cv) {
+              <div>
+                <a (click)="openFile(employeeRef.cv ?? '', employeeRef.cvContentType)" jhiTranslate="entity.action.open">Ouvrir</a>
+                {{ employeeRef.cvContentType }}, {{ byteSize(employeeRef.cv ?? '') }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.manager">Manager</span></dt>
+          <dd>
+            @if (employee()!.manager) {
+              <div>
+                <a [routerLink]="['/employee', employee()!.manager?.id, 'view']">{{ employeeRef.manager?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.employee.department">Department</span></dt>
+          <dd>
+            @if (employee()!.department) {
+              <div>
+                <a [routerLink]="['/department', employee()!.department?.id, 'view']">{{ employeeRef.department?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/employee', employeeRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

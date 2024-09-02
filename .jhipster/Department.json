@@ -1,6 +1,9 @@
 {
-  "annotations": {},
+  "annotations": {
+    "changelogDate": "20240902054731"
+  },
   "applications": "*",
+  "dto": "mapstruct",
   "fields": [
     {
       "fieldName": "departmentName",
@@ -9,6 +12,7 @@
     }
   ],
   "name": "Department",
+  "pagination": "pagination",
   "relationships": [
     {
       "otherEntityName": "location",
@@ -25,5 +29,6 @@
       "relationshipType": "one-to-many"
     }
   ],
+  "searchEngine": "no",
   "service": "serviceImpl"
 }

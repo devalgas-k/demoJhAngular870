@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (job(); as jobRef) {
+      <div>
+        <h2 data-cy="jobDetailsHeading"><span jhiTranslate="demoJhAngular870App.job.detail.title">Job</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ jobRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.jobTitle">Job Title</span></dt>
+          <dd>
+            <span>{{ jobRef.jobTitle }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.minSalary">Min Salary</span></dt>
+          <dd>
+            <span>{{ jobRef.minSalary }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.maxSalary">Max Salary</span></dt>
+          <dd>
+            <span>{{ jobRef.maxSalary }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.subSalary">Sub Salary</span></dt>
+          <dd>
+            <span>{{ jobRef.subSalary }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.totalSalary">Total Salary</span></dt>
+          <dd>
+            <span>{{ jobRef.totalSalary }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.date">Date</span></dt>
+          <dd>
+            <span>{{ jobRef.date | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.codeCode">Code Code</span></dt>
+          <dd>
+            <span>{{ jobRef.codeCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.profil">Profil</span></dt>
+          <dd>
+            @if (jobRef.profil) {
+              <div>
+                <a (click)="openFile(jobRef.profil ?? '', jobRef.profilContentType)">
+                  <img [src]="'data:' + jobRef.profilContentType + ';base64,' + jobRef.profil" style="max-width: 100%" alt="job" />
+                </a>
+                {{ jobRef.profilContentType }}, {{ byteSize(jobRef.profil ?? '') }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.task">Task</span></dt>
+          <dd>
+            @for (task of jobRef.tasks; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/task', task.id, 'view']">{{ task?.title }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+          <dt><span jhiTranslate="demoJhAngular870App.job.employee">Employee</span></dt>
+          <dd>
+            @if (job()!.employee) {
+              <div>
+                <a [routerLink]="['/employee', job()!.employee?.id, 'view']">{{ jobRef.employee?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/job', jobRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

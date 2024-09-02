@@ -1,7 +1,10 @@
 {
-  "annotations": {},
+  "annotations": {
+    "changelogDate": "20240902054735"
+  },
   "applications": "*",
   "documentation": "not an ignored comment",
+  "dto": "mapstruct",
   "fields": [
     {
       "fieldName": "streetAddress",
@@ -21,6 +24,7 @@
     }
   ],
   "name": "Location",
+  "pagination": "pagination",
   "relationships": [
     {
       "otherEntityName": "country",
@@ -29,5 +33,6 @@
       "relationshipType": "one-to-one"
     }
   ],
+  "searchEngine": "no",
   "service": "serviceImpl"
 }

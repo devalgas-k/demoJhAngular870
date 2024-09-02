@@ -1,0 +1,17 @@
+{
+  "annotations": {},
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "name": "Subject",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceImpl"
+}

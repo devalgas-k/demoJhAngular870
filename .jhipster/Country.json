@@ -1,6 +1,9 @@
 {
-  "annotations": {},
+  "annotations": {
+    "changelogDate": "20240902054730"
+  },
   "applications": "*",
+  "dto": "mapstruct",
   "fields": [
     {
       "fieldName": "countryName",
@@ -8,6 +11,7 @@
     }
   ],
   "name": "Country",
+  "pagination": "pagination",
   "relationships": [
     {
       "otherEntityName": "region",
@@ -16,5 +20,6 @@
       "relationshipType": "one-to-one"
     }
   ],
+  "searchEngine": "no",
   "service": "serviceImpl"
 }

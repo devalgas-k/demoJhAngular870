@@ -1,18 +1,44 @@
 {
-  "annotations": {},
+  "annotations": {
+    "changelogDate": "20240902054733"
+  },
   "applications": "*",
+  "dto": "mapstruct",
   "fields": [
     {
       "fieldName": "jobTitle",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["unique", "required"]
     },
     {
       "fieldName": "minSalary",
-      "fieldType": "Long"
+      "fieldType": "BigDecimal"
     },
     {
       "fieldName": "maxSalary",
       "fieldType": "Long"
+    },
+    {
+      "fieldName": "subSalary",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "totalSalary",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "codeCode",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "profil",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
     }
   ],
   "name": "Job",
@@ -32,5 +58,7 @@
       "relationshipSide": "right",
       "relationshipType": "many-to-one"
     }
-  ]
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
 }

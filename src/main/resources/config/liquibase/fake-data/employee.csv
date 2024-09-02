@@ -1,0 +1,10 @@
+id;first_name;last_name;email;phone_number;hire_date;salary;commission_pct;level;contract;cv;cv_content_type
+1;Ghislain;Da silva;"i@[`B.;!";aïe drôlement autant;2024-09-01T09:40:37;3813;20523;3;CDI;../fake-data/blob/hipster.png;image/png
+2;Olive;Bertrand;"~j:@;..^C7]";alentour;2024-09-02T04:10:51;29514;20575;13;FREELANCE;../fake-data/blob/hipster.png;image/png
+3;Adegrin;Rousseau;"j@}.h,";tromper tant que;2024-09-01T23:18:57;23341;26886;14;CDD;../fake-data/blob/hipster.png;image/png
+5;Irina;Huet;"SM@3qKG\L.yK";magenta via à demi;2024-09-01T07:53:29;172;12279;13;FREELANCE;../fake-data/blob/hipster.png;image/png
+6;Absalon;Guerin;"{!@#D_vx.`3nl]B";main-d’œuvre entre rester;2024-09-01T16:14:57;17225;18090;12;CDI;../fake-data/blob/hipster.png;image/png
+7;Odette;Garcia;".@?.J-kT";aux environs de;2024-09-01T07:01:26;4928;23163;11;FREELANCE;../fake-data/blob/hipster.png;image/png
+8;Christiane;Bonnet;";_@E;.b[";au-dessous de cadre;2024-09-01T16:35:32;12072;18483;10;FREELANCE;../fake-data/blob/hipster.png;image/png
+9;Mérovée;Charles;"kdQn.@Fc2.`kA$";porte-parole direction tchou tchouu;2024-09-01T06:33:59;16102;29388;12;CDI;../fake-data/blob/hipster.png;image/png
+10;Laurine;Guyot;"#@g.$";quelque plouf équipe;2024-09-01T14:31:12;21429;17632;2;CDI;../fake-data/blob/hipster.png;image/png
